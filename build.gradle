@@ -12,6 +12,12 @@ ext {
     rxJavaVersion = '2.1.6'
     glassfishVersion = '3.1.1'
     constraintLayoutVersion = '1.1.0'
+    multidexVersion = '1.0.1'
+    butterknifeVersion = '8.8.1'
+    greendaoVersion = '3.2.2'
+    eventBusVersion = '3.1.1'
+    glideVersion = '4.2.0'
+
 }
 
 buildscript {
