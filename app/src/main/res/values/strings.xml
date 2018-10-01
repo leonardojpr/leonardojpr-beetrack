@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">leonardojpr-beetrack</string>
+    <string name="news_api_key" translatable="false">f771430ff4904757825953a862fc7de6</string>
+    <string name="country" translatable="false">us</string>
+    <string name="api_url" translatable="false">https://newsapi.org/</string>
+
+    <string name="ups_error">Ups there was an error, try again</string>
+
+    <string name="author">Author</string>
+    <string name="article">Article</string>
+    <string name="favorite">Favorite</string>
+
+    <string name="connectivity_exception">No connectivity exception</string>
+    <string name="try_again">An error has occurred, try again</string>
+    <string name="no_internet">No internet connection</string>
+</resources>

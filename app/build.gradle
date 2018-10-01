@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.pruebatecnica.leonardojpr_beetrack"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+         multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "leonardojpr_beetrack-${variant.name}-${variant.versionName}.apk"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        //incremental true
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    // -------- Test -----------
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // -------- Support Library Version -----------
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    compile 'com.android.support:multidex:1.0.1'
+
+    // -------- Dagger -----------
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    compileOnly "org.glassfish:javax.annotation:$rootProject.glassfishVersion"
+
+    // -------- Retrofit -----------
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+
+    compile group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.10.0'
+
+    // -------- RxJava -----------
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+
+    // -------- butterknife -----------
+    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
+    // -------- greendao -----------
+    compile "org.greenrobot:greendao:$rootProject.greendaoVersion"
+    compile "org.greenrobot:eventbus:$rootProject.eventBusVersion"
+
+    // -------- glide -----------
+    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+}
